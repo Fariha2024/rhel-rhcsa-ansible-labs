@@ -1,0 +1,108 @@
+Ansible Introduction - 
+-----------------------------------------------------------------------
+Ansible is open source software configuration management tool.
+Ansible can control hundreds and more clients from central server without install any agent.
+Ansible was develop by Michael Dehaan and his team in Feb 2012.
+Ansible tool develop in python programming language.
+Initially Ansible Work Inc provide funding to ansible project but later 2015 Red hat acquired ansible project.
+Ansible is one of the most popular tool to manage software configuration management, infrastructure management of cloud, manage various routers, firewalls, and network devices.
+Ansible can work on cross platform.
+Ansible use ssh protocol to connect with client computers.
+Ansible is lightweight, easy to use, secure, agentless tool as compare with competitive tools ( puppet, chef, CF-Engine )
+----------------------------------------------------------------------
+Ansible Advantages:
+
+Ansible is free to use everyone
+Ansible is Simple
+Ansible is Powerful
+Ansible is Agentless
+Ansible is work on Cross platform Support
+Ansible is Human Readable Automation
+Ansible Think Declaratively
+Ansible is allow Break Complexity
+Ansible is Very Secure
+Ansible is consistent and lightweight
+================================================================
+
+for reference use diagram 
+====================================================================================================
+Ansible Lab Setup:
+----------------------------------------------------------------------------------------------------
+Perform following command on all nodes - 
+
+create itadmin user with 111 password,give sudo privilege without password.
+up ssh configuration file (rootpermit and password authentication)
+set multi-user.target as a default runlevel
+set proper hostname and ip address
+update yum repo file on ansible server.
+---------------------------------------------------------------------------------------------------------
+Open terminal on ansible control node ( check connectivity ) -
+
+#ping  192.168.10.3
+#ping  192.168.10.4
+#ping  192.168.10.5
+
+for ping with name ( update host file )
+#vim    /etc/hosts
+192.168.10.3	node1
+192.168.10.4	node2
+192.168.10.5	node3
+:wq
+
+For verify
+#ping	node1
+#ping	node2
+#ping	node3
+-------------------------------------------------------------------------------------------
+install ansible package 
+
+#yum	install		ansible*	-y
+
+check version
+
+#ansible    --version
+---------------------------------------------------------------------------------------------
+Generate ssh key and transfer to all manage nodes -
+
+#su   itadmin
+$ssh-keygen
+
+$ssh-copy-id	itadmin@node1
+$ssh-copy-id	itadmin@node2
+$ssh-copy-id	itadmin@node3
+----------------------------------------------------------------------------------------------
+update ansible inventory file
+
+$sudo   vim    /etc/ansible/hosts
+[web]
+node1
+node2
+[dev]
+node3
+:wq
+----------------------------------------------------------------------------------------------
+ping all manage node via ansible
+
+$ansible	all	-m	ping
+============================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
