@@ -1,0 +1,150 @@
+Regular Expression:
+Regular expression is process of search specific file and directory based on name, permission, ownership of user/group, size etc.
+
+In regular expression use following command popularly
+1. grep
+2. find
+3. head
+4. tail
+5. wc
+---------------------------------------------------------------------------------------------------------------------
+1. grep ( Global Regular Expression Print )
+grep command use for search line from file/dir basis on matching character or string.
+if character is matched then grep show whole line.
+
+create sample file
+#vim   /home/city.txt
+Linux is secure OS
+linux easy to use
+windows and linux OS both are popular
+Linux is free 
+:wq
+-------------------------------------------------------------------------------------------
+1. search secure
+#grep	secure	/home/city.txt
+-------------------------------------------------------------------------------------------
+2. search secure in multiple file
+#grep 	secure	/home/city.txt     /etc/passwd         /etc/group
+-------------------------------------------------------------------------------------------
+3. show list of file if character name matched
+#grep  -l  secure  	/home/city.txt     /etc/passwd         /etc/group
+-------------------------------------------------------------------------------------------
+4. show list of file where character is not matched
+#grep	-L    secure  	/home/city.txt     /etc/passwd         /etc/group
+-------------------------------------------------------------------------------------------
+5. show all line where character is not matched
+#grep 	-v	secure   /home/city.txt
+-------------------------------------------------------------------------------------------
+6. show match line number
+#grep	-n	secure   /home/city.txt
+-------------------------------------------------------------------------------------------
+7. show counting of lines
+#grep	-c	secure   /home/city.txt
+-------------------------------------------------------------------------------------------
+8. search in-case-sensitive
+#grep	-i	Linux	/home/city.txt
+-------------------------------------------------------------------------------------------
+9. search line which start with specific character
+#grep	^linux   /home/city.txt
+-------------------------------------------------------------------------------------------
+10. search line which end with specific character
+#grep    OS$	/home/city.txt
+-------------------------------------------------------------------------------------------
+11. search inside directory ( recursively )
+#grep   -r   secure   /home
+-------------------------------------------------------------------------------------------
+12. search and redirect result into new file
+#grep	secure	/home/city.txt    >   /note.txt
+#cat   /note.txt
+-------------------------------------------------------------------------------------------
+13. search and append result into old file
+#grep	linux	/home/city.txt    >>   /note.txt
+#cat  /note.txt
+---------------------------------------------------------------------------------------------------------------------------
+2. find
+find command use for search/find file and directory on basis of name, owner(user), group owner, permissions, size etc.
+
+1. find with name
+#find  /home  -name   city.txt
+-------------------------------------------------------------------------------------------
+2. find with permission
+#find   /usr  -perm   4755
+or
+#find   /usr  -perm   2755
+or
+#find   /usr  -perm   777
+-------------------------------------------------------------------------------------------
+3. find with owner ( user )
+#find   /usr	  -user   ratanji
+-------------------------------------------------------------------------------------------
+4. find with group owner
+#find   /usr 	 -group   tatagrp
+-------------------------------------------------------------------------------------------
+5. find with size ( show less than 100 MB )
+#find   /usr 	  -size   -100M
+-------------------------------------------------------------------------------------------
+6. find with size ( more than 100 MB )
+#find  /usr  	 -size   +100M
+-------------------------------------------------------------------------------------------
+7. find with size ( more than 50MB but less than 100MB )
+#find  /usr  	 -size   +50M   -size   -100M
+-------------------------------------------------------------------------------------------
+8. Modification time (mtime)
+
+mtime = days old
+mmin = minutes old
+
+#find /path -mtime -1        # modified within last 1 day
+#find /path -mtime +7        # modified more than 7 days ago
+#find /path -mmin -30        # modified in last 30 minutes
+-------------------------------------------------------------------------------------------
+9. find user file and paste into backup directory
+#find   /tata	-user   kiran   -exec   cp  -rvf   {}   /backup/  \;
+-------------------------------------------------------------------------------------------
+10. find user file and delete it
+#find   /tata   -user   ajay   -exec   rm   -rvf   {}   \;
+--------------------------------------------------------------------------------------------------------------------------
+3. head
+head command use for show top 10 line of the file
+
+show top 10 line
+#head	/etc/passwd
+-------------------------------------------------------------------------------------------
+show top 4 line
+#head  -n  4  /etc/passwd
+--------------------------------------------------------------------------------------------------------------------------
+4. tail
+tail command use for show bottom 10 line of the file
+
+show bottom 10 line
+#tail   /etc/passwd
+-------------------------------------------------------------------------------------------
+show bottom 3 line
+#tail  -n   3 /etc/passwd
+--------------------------------------------------------------------------------------------------------------------------
+5. wc ( word count )
+wc command use for count line, word and characters
+
+#wc   /home/city.txt
+-------------------------------------------------------------------------------------------
+for show line
+#wc   -l	/home/city.txt
+-------------------------------------------------------------------------------------------
+for show word
+#wc   -w 	/home/city.txt
+-------------------------------------------------------------------------------------------
+for show characters
+#wc   -c 	/home/city.txt
+---------------------------------------------------------------------------------------------------------------------------
+For help of any command on Linux terminal use following command
+
+#man
+
+eg.
+
+#man  grep
+#man  useradd
+==================================================================================
+
+
+

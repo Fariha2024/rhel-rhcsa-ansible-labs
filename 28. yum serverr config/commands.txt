@@ -1,0 +1,105 @@
+yum/dnf server -
+
+yum/dnf server acts as a central repository for software packages. 
+It simplifies package management by allowing users to easily install, update, remove, and query software packages using the yum command.
+It allows multiple client systems to access and download packages from a single, centralized location. 
+This is especially useful for organizations with many Linux servers, as it reduces the need to download packages individually for each machine. 
+YUM repositories can be hosted on local servers or remote servers accessible over a network.
+---------------------------------------------------------------------------
+Benefit of yum server:
+- Centralized Package Management
+- Dependency Resolution
+- Reduced Network Traffic
+- Offline Access
+- Provide high speed
+============================================================================================
+step for configure yum server
+---------------------------------------------------------------------------
+Step1. set proper ip and name to computer.
+#nmcli  con  add  con-name  server1  ifname  enp0s3  type  ethernet  ipv4.add  192.168.1.2/24   gw4  192.168.1.1   ipv4.dns  192.168.1.1  connection.autoconnect yes  ipv4.method  manual
+#nmcli  con  up  server1
+
+#hostnamectl  set-hostname   server1.example.com
+---------------------------------------------------------------------------------------
+Step2.  create yum repository  ( iso not available then add it from vm settings )
+
+#lsblk
+#cd   /etc/yum.repos.d/
+#rm  -rvf   *
+#vim   server1.repo
+[01]
+name=app
+baseurl=file:///run/media/root........AppStream
+enabled=1
+gpgcheck=0
+[02]
+name=base
+baseurl=file:///run/media/root.........BaseOS
+enabled=1
+gpgcheck=0
+:wq
+------------------------------------------------------------------------------------------
+Step3. install package httpd 
+#yum  install  httpd  -y
+------------------------------------------------------------------------------------------
+Step4: start an enable httpd service
+#systemctl  start  httpd
+#systemctl  enable  httpd
+------------------------------------------------------------------------------------------
+Step5. copy and paste packages into apache home directory
+
+#cd   /run/media/root...........x86_64/
+#cp  -rvf   AppStream   /var/www/html/
+#cp  -rvf   BaseOS   /var/www/html/
+------------------------------------------------------------------------------------------
+Step6. update repo file
+#vim   /etc/yum.repos.d/server1.repo
+
+[01]
+name=app
+baseurl=http://192.168.1.2/AppStream
+enabled=1
+gpgcheck=0
+[02]
+name=base
+baseurl=http://192.168.1.2/BaseOS
+enabled=1
+gpgcheck=0
+:wq
+------------------------------------------------------------------------------------------
+Step7. clean cache and check repolist
+#yum  clean  all
+#yum  repolist
+------------------------------------------------------------------------------------------
+Step8. add http service into firewall
+#firewall-cmd  --permanent  --add-service=http
+#firewall-cmd  --reload
+======================================================================================================
+Step for client computers ( server2 )
+
+Step1. Set proper ip and hostname
+#nmcli  con  add  con-name  server2  ifname  enp0s3  type  ethernet  ipv4.add  192.168.1.3/24   gw4  192.168.1.1   ipv4.dns  192.168.1.1  connection.autoconnect yes  ipv4.method  manual
+#nmcli  con  up  server2
+
+#hostnamectl  set-hostname   server2.example.com
+------------------------------------------------------------------------------------------
+Step2. Open terminal ( server2 )
+#cd  /etc/yum.repos.d/
+#rm  -rvf  *
+#vim   /etc/yum.repos.d/server1.repo
+
+[01]
+name=app
+baseurl=http://192.168.1.2/AppStream
+enabled=1
+gpgcheck=0
+[02]
+name=base
+baseurl=http://192.168.1.2/BaseOS
+enabled=1
+gpgcheck=0
+:wq
+------------------------------------------------------------------------------------------
+Step3. install packages ( test purpose )
+#yum  install  vsftpd  -y
+=========================================================================================================================

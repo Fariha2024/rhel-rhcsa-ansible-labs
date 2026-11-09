@@ -1,0 +1,53 @@
+Manage SELinux Security Labels:
+
+check selinux labels
+
+#ls	-ldZ	/account
+#ls	-ldZ	/var/www/html/
+
+Note. 
+When we create file /directory in top level(/) then we got default_t label
+When create file/directory inside any other existing directory label inherit from parent directory
+--------------------------------------------------------------------------------------------------------
+For change label ( temporary )
+#chcon   -R -t   httpd_sys_content_t   /account
+#ls	-ldZ	/account
+--------------------------------------------------------------------------------------------------------
+Temporary label reset (remove)
+#touch    /.autorelabel
+#reboot
+or
+
+#restorecon	-Rv   /account
+--------------------------------------------------------------------------------------------------------
+for change label (permanently)
+
+#semanage   fcontext   -a  -t   httpd_sys_content_t   "/account(/.*)?"
+#restorecon	-Rv	/account
+--------------------------------------------------------------------------------------------------------
+For show custom set labels
+#semanage	fcontext	-C	-l
+--------------------------------------------------------------------------------------------------------
+For remove label
+#semanage	fcontext	-d   "/account(/.*)?"
+#restorecon	-Rv	/account
+--------------------------------------------------------------------------------------------------------
+to check parent and child label matched or not
+
+#matchpathcon   -V   /account/*
+
+--------------------------------------------------------------------------------------------------------
+to show selinux Booleans
+
+#getsebool   -a
+
+to set sebool on
+#setsebool   radius_use_jit  on
+or
+#setsebool   radius_use_jit  1
+-----------------------------------------------
+to set sebool off
+#setsebool   radius_use_jit  off
+or
+#setsebool   radius_use_jit  0
+====================================================================================================================

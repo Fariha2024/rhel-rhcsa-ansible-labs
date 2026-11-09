@@ -1,0 +1,52 @@
+3. Special Permission
+Special permission design for executable file and directory.
+
+It divided into 3 types
+1. SUID ( Set User ID )
+2. SGID ( Set Group ID )
+3. Sticky Bit 
+-----------------------------------------------------------------------------
+1. SUID ( Set User ID )
+when we set SUID permission on any executable file then any one can run/execute that file as a owner.
+
+For set SUID
+#chmod	u+s	/usr/bin/nmtui
+or
+#chmod  4755    /usr/bin/nmtui
+
+For remove SUID
+#chmod	u-s	/usr/sbin/nmtui
+-----------------------------------------------------------------------------
+2. SGID ( Set Group ID )
+when we set SGID permission on any directory then that directory group ownership inherit on new child ( file/dir )
+
+For set SGID
+#chmod	g+s	/tata
+or
+#chmod  2777    /tata
+
+For remove SGID
+#chmod	g-s	/tata
+-----------------------------------------------------------------------------
+3. Sticky Bit
+when we set sticky bit permission on any directory then contents inside that directory can delete by owner only.
+It is very useful for publicly share contents.
+
+For set Sticky Bit
+#chmod	o+t	/data
+or
+#chmod  1777    /data
+
+For remove sticky Bit
+#chmod	o-t	/data
+-----------------------------------------------------------------------------
+set special permission with number
+
+u+s = 4  any one can run command as a owner.
+g+s = 2  parent directory group ownership inherit on new child
+o+t = 1  contents only delete by its owner.
+=======================================================================================
+
+
+
+

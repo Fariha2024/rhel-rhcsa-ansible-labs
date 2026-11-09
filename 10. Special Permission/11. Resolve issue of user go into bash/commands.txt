@@ -1,0 +1,38 @@
+Resolve issue of user go into bash shell after change default home directory:
+---------------------------------------------------
+#useradd    sara
+#grep   sara   /etc/passwd
+---------------------------------------------------
+For change directory:
+#mkdir     /goa
+
+#usermod   -d   /goa    sara
+#grep   sara   /etc/passwd  
+---------------------------------------------------
+home directory change but if you login as a sara then user go into bash shell to resolve this use following command
+
+#chmod   700  /goa
+#chown    sara:sara   /goa
+
+now copy sara profile hidden file into new directory
+#cp  -rvf    /home/sara/.bash*    /goa
+---------------------------------------------------
+Now try to login with sara user
+#su   sara
+#cd
+#pwd
+---------------------------------------------------
+show hidden file and dir
+#ls   -a   /home/sara/
+
+for create hidden file and directory
+#mkdir    /home/sara/.test
+#touch    /home/sara/.note.txt
+
+#ls       /home/sara/
+#ls -a    /home/sara/
+
+how to unhide, hidden directory/file ( rename dir/file )
+$mv    /home/sara/.test   /home/sara/test
+#ls    /home/sara/
+======================================================================================================================

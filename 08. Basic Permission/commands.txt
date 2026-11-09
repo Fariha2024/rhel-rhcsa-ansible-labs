@@ -1,0 +1,25 @@
+Permission
+permission is use for control access of file and directory.
+------------------------------------------------------------------------------
+Permission divided into 3 types
+
+1. Basic Permission 
+2. ACL Permission 
+3. Special Permission 
+------------------------------------------------------------------------------
+1. Basic Permission:
+It very flexible to manage.
+we can control access for user, group and other to specific file or directory.
+in basic permission we set read, write and execute permission.
+
+Steps for manage basic permission
+----------------------------------------------------------------------
+#mkdir   /mumbai
+#touch   /note.txt
+
+1. check permission of file
+#ls	-l	/note.txt
+---------------------------------------------
+2. check permission of directory
+#ls	-ld	/mumbai
+---------------------------------------------

@@ -1,0 +1,64 @@
+Firewall 
+firewall filter incoming and outgoing traffic of computer.
+based on predefined rule firewall decide allow or deny connection.
+firewall popularly called first line of defense or first security gate.
+
+Firewall Zone.
+zone is like a profile which have rule based on trust level of network.
+eg.
+home, public, work 
+-----------------------------------------------------------------------------------
+
+for start,stop,restart firewall service 
+
+#systemctl	 start	 	firewalld
+#systemctl 	 stop 		firewalld
+#systemctl 	 restart	firewalld
+#systemctl 	 enable 	firewalld
+#systemctl 	 disable	firewalld
+#systemctl	 status		firewalld
+-----------------------------------------------------------------------------------
+1. to check default zone
+#firewall-cmd  --get-default-zone
+----------------------------------------------------------------
+2. check zone list
+#firewall-cmd  --list-all-zones
+----------------------------------------------------------------
+3. to set default zone
+#firewall-cmd  --set-default-zone=work
+----------------------------------------------------------------
+4. to show active zone details
+#firewall-cmd  --list-all
+----------------------------------------------------------------
+5. to add service into firewall
+#firewall-cmd  --permanent  --add-service=ssh
+or
+5. to add multiple service into firewall
+#firewall-cmd  --permanent  --add-service={ssh,http,https,dhcp}
+----------------------------------------------------------------
+6. to remove service from firewall
+#firewall-cmd  --permanent  --remove-service=ssh
+or
+6. to remove multiple services form firewall
+#firewall-cmd  --permanent  --remove-service={ssh,http,https,dhcp}
+----------------------------------------------------------------
+7. to reload firewall service
+#firewall-cmd  --reload
+----------------------------------------------------------------
+8.to add port into firewall
+#firewall-cmd  --permanent  --add-port=22/tcp
+----------------------------------------------------------------
+9. to remove port from firewall
+#firewall-cmd  --permanent  --remove-port=22/tcp
+----------------------------------------------------------------
+10. to add service into inactive zone
+#firewall-cmd  --permanent  --add-service=ssh     --zone=public
+============================================================================================================================
+
+
+
+
+
+
+
+

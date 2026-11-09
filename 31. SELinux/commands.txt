@@ -1,0 +1,41 @@
+SELinux ( Security Enhance Linux ):
+--------------------------------------------------------------------------------
+SELinux provide enhance security layer to Linux OS.
+SELinux create security rules, labels, context to securely access various services, ports, file, directory etc.
+SELinux provide security label to every file, dir, service, port etc, if security label is matched then content can be accessed.
+
+SELinux security work in 3 modes.
+
+1. enforcing
+2. permissive
+3. disabled
+--------------------------------------------------------------------------------
+1. enforcing 
+if any one break rule then selinux strictly deny and store log.
+
+2. permissive
+if any one break rule then selinux allow and store log.
+
+3. disabled
+selinux security completely disabled.
+--------------------------------------------------------------------------------
+check selinux mode
+#getenforce
+--------------------------------------------------------
+set selinux mode ( enforcing )
+#setenforce   enforcing
+or
+#setenforce	1
+--------------------------------------------------------
+set selinux mode ( permissive )
+#setenforce   permissive
+or
+#setenforce	0
+--------------------------------------------------------
+set selinux mode permanently
+
+#vim	/etc/selinux/config
+
+SELINUX=enforcing				#[ line no 22 ]
+
+:wq

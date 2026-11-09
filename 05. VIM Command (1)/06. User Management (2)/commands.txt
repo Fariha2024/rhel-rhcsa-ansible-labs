@@ -1,0 +1,104 @@
+Manage User Account
+
+what is user?
+user is a name of computer account, which capable to login into computer and use available hardware/software resources.
+
+Type of user account-
+---------------------------------------------------------------------------------
+1. System User
+system user account create and delete automatically when we install operating system and application software.
+eg.
+root, apache
+---------------------------------------------------------------------------------
+2. Normal User
+normal user account create and delete by privilege users.
+eg.
+student, ajay, amir
+---------------------------------------------------------------------------------
+Every use account always have unique user id
+
+0 - 999			reserved for system users.
+1000 - 60000		use for normal user account.
+---------------------------------------------------------------------------------
+User Account Database
+
+User account properties		-	/etc/passwd
+User Password properties	-	/etc/shadow
+---------------------------------------------------------------------------------
+Steps for manage user account
+
+1. create user account
+#useradd	sachin
+--------------------------------------------------------------
+2. create/change password
+#passwd  	sachin
+--------------------------------------------------------------
+3. check user account property
+#grep	sachin	/etc/passwd
+--------------------------------------------------------------
+4. check user password property
+#grep	sachin	/etc/shadow
+--------------------------------------------------------------
+5. switch user account
+#su	sachin
+--------------------------------------------------------------
+6. logout from user account
+#exit
+or
+press "ctrl+d" key
+--------------------------------------------------------------
+7. delete user account ( delete user with home directory )
+#userdel  -r   sachin
+
+or
+
+7. delete user account ( delete user without home directory )
+#userdel 	sachin
+============================================================================================
+Modify User Account Properties
+
+8. modify user login name
+#usermod  -l   ajay   sachin
+--------------------------------------------------------------
+9. modify user id
+#usermod  -u   2525   sachin
+--------------------------------------------------------------
+10. modify comment
+#usermod  -c "junior admin"  sachin
+--------------------------------------------------------------
+11. modify  home directory
+#mkdir  /goa
+#usermod  -d  /goa  sachin
+--------------------------------------------------------------
+12. modify shell ( provide non-interactive shell )
+#usermod  -s  /sbin/nologin   sachin
+--------------------------------------------------------------
+13. modify expiry days
+#usermod  -e  "2025-08-30"  sachin
+--------------------------------------------------------------
+14. lock user password
+#usermod  -L   sachin
+--------------------------------------------------------------
+15. unlock user password
+#usermod  -U  sachin
+===============================================================================================
+Group Account Management - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

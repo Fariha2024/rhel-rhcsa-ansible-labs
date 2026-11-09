@@ -1,0 +1,31 @@
+2. ACL Permission
+ACL Stands for Access Control List
+ACL permission use for provide permission to specific user or group.
+---------------------------------------------------------------------------
+For check ACL Permission
+#getfacl	/Mumbai
+---------------------------------------------------------------------------
+For set ACL permission to user
+#setfacl	-m	u:sara:rwx	/mumbai
+or
+#setfacl	-m	u:sara:7	/mumbai
+---------------------------------------------------------------------------
+For modify ACL permission to user
+#setfcal	-m	u:sara:r-x	/mumbai
+or
+#setfcal	-m	u:sara:5	/mumbai
+---------------------------------------------------------------------------
+For remove ACL permission of user
+#setfacl	-x	u:sara:		/mumbai
+---------------------------------------------------------------------------
+if you want remove all(all user and all groups) ACL permission
+#setfacl	-b	/mumbai
+---------------------------------------------------------------------------
+For set ACL permission to group
+#setfacl	-m	g:indiagrp:rwx		/mumbai
+or
+#setfacl	-m	g:indiagrp:7		/mumbai
+---------------------------------------------------------------------------
+For remove ACL permission of group
+#setfacl	-x	g:indiagrp:		/mumbai
+---------------------------------------------------------------------------

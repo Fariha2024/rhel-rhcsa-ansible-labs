@@ -1,0 +1,53 @@
+----------------------------
+#vim ( Visual Improve )
+vim command is use for create file, write file, edit file, append file, read file etc.
+vim command is improve version of vi command, vi was very popular command use in unix OS.
+
+to work with vim command we need to understand vim working mode
+
+1. command mode
+2. insert mode
+3. extended mode
+
+------------------------------------------------------------------------
+eg.
+#vim	/linux.txt
+
+
+Insert Mode Operation
+It is used for insert/edit data in a file
+----------------------------------------------
+Extended Mode Operation
+
+:w For Write (save)
+:q For Quit (exit)
+:wqFor write and quit (save & exit)
+
+Add !Mark for forcefully operation (eg. :w!)
+
+:se nu For provide serial number to lines
+:se nonuFor remove serial number of lines
+
+----------------------------------------------
+command mode operations
+
+yy	copy line
+yw	copy word
+nyy	copy number of line
+
+dd	delete line
+dw	delete word
+ndd	delete number of line
+
+p	paste
+u	undo
+ctrl+r	redo
+
+G	go to bottom line of the file
+gg	go to top line of the file
+
+ngg or  nG  to go specific number of line
+
+
+undo and redo support 1000 times.
+============================================================================================================================

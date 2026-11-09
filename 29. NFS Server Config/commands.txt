@@ -1,0 +1,60 @@
+NFS Server ( Network File System )
+
+NFS server is use for share file, dir, volume with client computers.
+It is very easy to configure.
+It use port number 2049
+
+Important Concepts -
+------------------------------------------------------
+Package 	-	nfs*
+service		- 	nfs-server
+firewall	-	nfs
+config file	-	/etc/exports
+port number	-	2049
+------------------------------------------------------
+Steps for configure nfs server ( server1 )
+
+1. install package
+#yum  install  nfs*
+------------------------------------------------------
+2. start and enable nfs service
+#systemctl  start  nfs-server
+#systemctl  enable  nfs-server
+------------------------------------------------------
+3. create contents for share
+#mkdir   /database
+#touch  /database/test{1..5}.txt
+#chmod   1777  /database
+------------------------------------------------------
+4. update nfs configuration file
+#vim  /etc/exports
+/database	192.168.1.0/24(rw)
+:wq
+------------------------------------------------------
+5. restart nfs service
+#systemctl  restart  nfs-server
+------------------------------------------------------
+6. add nfs service into firewall
+#firewall-cmd  --permanent  --add-service=nfs
+#firewall-cmd  --reload
+------------------------------------------------------
+7. verify share
+#exportfs   -rv
+----------------------------------------------------------------------------
+Steps for client ( server2 )
+
+1. install package
+#yum  install  nfs-utils  -y
+-------------------------------------------------------
+2. create directory to mount 
+#mkdir   /info
+#mount   -t   nfs  192.168.1.2:/database   /info
+#ls  /info
+-------------------------------------------------------
+3. for permanent mount
+#vim  /etc/fstab
+192.168.1.2:/database  /info   nfs	defaults	0 0
+:wq
+#mount  -a
+#mount
+=================================================================================================================

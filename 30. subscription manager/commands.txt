@@ -1,0 +1,50 @@
+Subscription manager registration: 
+--------------------------------------------------------------------------------
+Step for register system red hat subscription manager:
+--------------------------------------------------------------------------------
+Step1: Create redhat login ( using web browser)
+
+https://www.redhat.com/wapps/ugc/register.html?_flowId=register-flow&_flowExecutionKey=e1s1
+
+Create personal account 
+-----------------------------------------------------------------------------------------------------
+Step2: Login in RHEL10
+
+Open terminal activate internet using appropriate network settings
+(Set proper time date/timezone)
+
+------------------------------------------------------------------------------------------------------
+Step3: login redhat create account using subscription manager
+
+#subscription-manager register
+
+username:
+password:
+
+-------------------------------------------------------------------------------------------------------
+Step4: Check available subscription list
+
+#subscription-manager list 
+--------------------------------------------------------------------------------------------------------
+Step5: Check yum repolist
+
+#yum clean all
+#yum repolist
+--------------------------------------------------------------------------------------------------------
+Step6: We can update packages now
+
+
+#rpm -q firefox
+or
+#yum info firefox
+
+verify:
+#yum update firefox -y
+
+#rpm -q firefox
+---------------------------------------------------------------------------------------------------------
+Step7: To unsubscribe subscription manager
+
+#subscription-manager unregister
+==========================================================================================================
+

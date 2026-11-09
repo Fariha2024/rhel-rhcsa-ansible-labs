@@ -1,0 +1,93 @@
+Resize Partition Size - 
+================================================================================
+Resize Partition
+
+Note.
+Before resize partition always take backup first.
+
+eg.
+#tar  -cvzf  /mnt/mubai.tar.gz   /mumbai
+------------------------------------------------------------------------------
+1. Resize ext4 file system partition ( mounted in /Mumbai )
+
+I. unmount partition
+#umount   /Mumbai
+------------------------------------------------------------------------------
+II. resize partition
+#fdisk   /dev/sdb
+delete partition and create new one with required size
+
+Do you want remove signature - No
+:w
+-------------------------------------------------------------------------------
+III. check error of file system and resize FS
+#e2fsck   -f  /dev/sdb1
+#resize2fs  /dev/sdb1
+
+IV. mount partition
+#mount   -a
+#lsblk
+#ls   /mumbai
+=======================================================================================================
+2. resize xfs file system partition  ( /pune )
+
+I. resize partition size
+#fdisk  /dev/sdb
+
+delete partition and create new one with extended size
+
+Do you want remove signature - No
+:w
+
+II. resize file sytem
+#xfs_growfs   /pune
+
+#lsblk
+#ls  /pune
+
+Note:
+ext4 file system support increase or decrease ( extend/shrink ) partition size.
+xfs file system only support for extend ( increase ) partition size.
+===========================================================================================================
+Swap Memory
+swap memory is a one type of ram ( virtual ram )
+swap memory take space from hard disk space.
+It support physical ram to handle load when physical ram is full.
+expert recommended create your system swap approximately dual size of physical ram.
+
+
+Steps for create swap
+----------------------------------------------------------------------------
+1. check swap space
+#free  -m
+----------------------------------------------------------------------------
+2. create/extend swap memory
+#fdisk   /dev/sdb
+create partition with required size  and set partition id (82) for swap
+:w
+-----------------------------------------------------------------------------
+3. to make swap
+#mkswap		/dev/sdb3
+------------------------------------------------------------------------------
+4. to swap on
+#swapon		/dev/sdb3
+------------------------------------------------------------------------------
+5. permanent mount swap
+#vim   /etc/fstab
+/dev/sdb3	swap	swap	defaults	0 0
+:wq
+#mount  -a
+------------------------------------------------------------------------------
+6. for swapoff
+#swapoff  /dev/sdb3
+or
+for off all swap
+#swapoff   -a
+
+for on all swap
+#swapon   -a
+------------------------------------------------------------------------------
+7. For remove swap
+
+first swapoff then remove record form /etc/fstab file and finally remove partition.
+====================================================================================================

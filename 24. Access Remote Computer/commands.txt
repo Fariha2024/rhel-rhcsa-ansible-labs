@@ -1,0 +1,106 @@
+Access Remote Computer using command line interface
+--------------------------------------------------------------------------------------------------
+ssh ( Secure shell )
+
+ssh command is use for access remote computer by using command line interface.
+ssh is secure protocol because it create encrypted line source to destination computer by using private/public key.
+It use port number 22.
+In history telnet popularly used for remote access but now telnet outdated, instead of telnet today use ssh
+
+-----------------------------------------------------------------------------------------------
+Steps for manage ssh connections
+
+1. allow root user ssh connection on both server
+#vim   /etc/ssh/sshd_config
+
+PermitRootLogin    yes				[ line 40 ]
+PasswordAuthentication  yes			[ line 65 ]
+
+:wq
+
+for restart ssh service
+#systemctl  restart  sshd
+-----------------------------------------------------------------------------------------------
+2. open terminal on server1 and access server2 root user
+#ssh    root@192.168.1.3
+------------------------------------------------------------------------------------------------
+3. for disconnect or logout
+#exit
+or
+press "ctrl+d" key
+------------------------------------------------------------------------------------------------
+3. open terminal on server1 and access server2 harry user
+#ssh   harry@192.168.1.3
+------------------------------------------------------------------------------------------------
+4. restrict root or harry user ssh access of server2 ( open terminal on server2 )
+#vim   /etc/ssh/sshd_config
+
+PermitRootLogin    no				[ line 40 ]
+DenyUsers  harry				[ line 41 ]
+:wq
+
+#systemctl  restart  sshd
+-----------------------------------------------------------
+for verify
+open terminal on server1
+
+#ssh    root@192.168.1.3
+#ssh    harry@192.168.1.3
+------------------------------------------------------------------------------------------------
+5. ssh access remote of remote computer without password ( key base authentication ) - open terminal on server1
+
+I. generate ssh key
+#ssh-keygen
+
+II. transfer created ssh key to server2 for root and harry
+#ssh-copy-id   root@192.168.1.3
+#ssh-copy-id   harry@192.168.1.3
+
+III. for verify
+#ssh   root@192.168.1.3
+#ssh   harry@192.168.1.3
+------------------------------------------------------------------------------------------------
+6. restrict ssh keybase authentication on server2 ( open terminal on server )
+
+for root
+#rm  -rvf   /root/.ssh/auth*
+
+for harry
+#rm  -rvf  /home/harry/.ssh/auth*
+
+For verify ( open terminal on server1 )
+#ssh   root@192.168.1.3
+#ssh   harry@192.168.1.3
+==============================================================================================================
+Manage services
+----------------------------------------
+what is systemctl?
+systemctl is the command-line utility used to manage and control services.
+systemctl allows you to interact with and control systemd services, which are processes that provide specific functionalities on your system.
+
+what is deamon?
+daemon is a Greek word, in Greek daemon is group of services running in background to provide various functionality.
+regular programs that are typically launched by users and run in the foreground, Daemons operate independently and often start automatically when a computer boots up. 
+eg. 
+dhcpd, httpd, sshd crond etc.
+----------------------------------------------------------------------
+steps for manager services
+----------------------------------------------------------------------
+for start service
+#systemctl  start  sshd
+----------------------------------------------------------------------
+for stop service
+#systemctl  stop  sshd
+----------------------------------------------------------------------
+for restart service
+#systemctl  restart   sshd
+----------------------------------------------------------------------
+for check status of service
+#systemctl  status  sshd
+----------------------------------------------------------------------
+for disable service ( every boot )
+#systemctl  disable   sshd
+----------------------------------------------------------------------
+for enable service   ( every boot )
+#systemctl  enable   sshd
+==================================================================================================================

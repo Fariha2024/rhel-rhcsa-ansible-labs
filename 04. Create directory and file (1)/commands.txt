@@ -1,0 +1,147 @@
+#mkdir 
+mkdir command is used for create directory ( folder )
+
+eg.
+-------------------------------------------------
+1. create single directory
+#mkdir  /india
+#ls  /
+-------------------------------------------------
+2. create multiple directory
+#mkdir  /city1  /city2  /city3
+#ls  /
+-------------------------------------------------
+3. create number of directory
+#mkdir  /city{4..9}
+-------------------------------------------------
+4. create directory inside directory
+#mkdir   -p  /usa/Washington/whitehouse
+#tree  /usa
+
+-p  permissive/parental
+----------------------------------------------------------------------------
+#touch
+touch command is use for create file.
+touch command is only support create empty file, can't read, write, edit, append file using touch command.
+
+eg.
+-------------------------------------------------
+1. create single file
+#touch  /note.txt
+-------------------------------------------------
+2. create multiple files
+#touch  /note1.txt   /note2.txt  /note3.txt
+-------------------------------------------------
+3. create number of files
+#touch  /note{4..9}.txt
+#touch  /note{a..z}.txt
+-------------------------------------------------------------------------------
+#rm
+rm command use for remove/delete file and directory.
+
+syntax
+#rm	<option>	<name of file/dir>
+
+Options
+-r	recursive
+-v	verbose
+-f	forcefully
+--------------------------------------------------------
+1. remove /india directory
+#rm	-rvf   /india
+--------------------------------------------------------
+2. remove /note.txt file
+#rm 	-rvf   /note.txt
+--------------------------------------------------------
+3. remove multiple file
+#rm 	-rvf	/note1.txt   /note2.txt   /note3.txt
+--------------------------------------------------------
+4. remove multiple file
+#rm	-rvf	/note{4..9}.txt
+--------------------------------------------------------
+5. remove all files which start with note character
+#rm 	-rvf	/note*
+--------------------------------------------------------------------------------------
+#cat
+cat command is use for create file, write file, read file also append file but cat command not supportable for edit existing file.
+
+syntax:
+#cat	<options>	<name of file>
+
+Options:
+>	create/write file
+>> 	append file
+<	read file	(default)
+-----------------------------------------------------------
+eg.
+
+1. create file 
+#cat	>	/info.txt
+Linux is secure os
+Linux is fast
+Linux is open source
+
+press "Ctrl+d" key for save and exit file
+-----------------------------------------------------------
+2. read file
+#cat	<	/info.txt
+or
+#cat		/info.txt
+------------------------------------------------------------
+3. append file
+#cat	>>	/info.txt
+Linux was develop by linus  torvald
+Linux belong from unix family
+
+press "Ctrl+d" key for save and exit file
+--------------------------------------------------------------------------------------------------------
+#cp
+cp command use for copy and paste
+
+syntax:
+#cp	<options>	<source file>		<dest file>
+
+Options:
+-r	recursive
+-v 	verbose
+-f	forcefully
+
+--------------------------------------------------------------
+eg.
+
+1. copy file
+#cp	-rvf	/root/anaconda-ks.cfg	/africa/
+--------------------------------------------------------------
+2. copy directory
+#cp	-rvf	/root/Music 	/africa/
+--------------------------------------------------------------
+3. copy all file/dir which start with Do keywords
+#cp	-rvf	/root/Do*	/africa/
+--------------------------------------------------------------
+4. copy 5 files
+#cp	-rvf	/root/note{1..5}.txt	/africa/
+--------------------------------------------------------------
+5. copy all contents of root directory
+#cp	-rvf	/root/*		/africa/
+--------------------------------------------------------------
+6. copy root directory
+#cp 	-rvf	/root		/africa/
+--------------------------------------------------------------
+7. copy all .txt extension file
+#cp	-rvf	/root/*.txt	/africa/
+--------------------------------------------------------------------------------------------------------
+#mv
+mv command use for cut/paste and also rename file/directory
+
+1. rename directory
+#mv	/africa		/asia
+--------------------------------------------------------------
+2. rename file
+#mv	/note.txt	/imp.txt
+--------------------------------------------------------------
+3. cut imp.txt and paste into aisa
+#mv	/imp.txt	/asia/
+--------------------------------------------------------------
+4. cut asia directory and paste into /root
+#mv	/asia/		/root/
+--------------------------------------------------------------------------------------------------------

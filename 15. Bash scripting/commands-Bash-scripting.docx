@@ -1,0 +1,121 @@
+1.	What is Bash Scripting
+________________________________________
+1. What is Shell and Shell Scripting?
+Shell
+•	A shell is a command-line interface (CLI) in Linux/Unix that allows the user to interact with the operating system.
+•	It acts as a bridge between the user and the kernel.
+•	Users type commands → Shell interprets commands → Kernel executes them.
+Shell Scripting
+•	A shell script is a text file containing a sequence of shell commands.
+•	When executed, the shell runs these commands automatically, just like programming.
+•	Used for:
+o	Automation (backups, installations)
+o	System administration
+o	Repetitive tasks
+o	Monitoring
+Example:
+echo "Hello World"
+________________________________________
+2. Architecture of Shell in Operating System
+Basic Architecture Flow
+User → Shell → Kernel → Hardware
+Explanation:
+1.	User types a command.
+2.	Shell interprets the command.
+3.	Shell sends system calls to the Kernel.
+4.	Kernel interacts with hardware (CPU, RAM, Disk).
+5.	Results return to the shell and shown to the user.
+This architecture ensures user-friendly interaction with complex internal system components.
+
+Architecture of Shell in an Operating System (Diagram)
+ 
+________________________________________
+3. Types of Shells
+Linux/Unix offers multiple shells, each with different features:
+Shell	Full Form	Executable	Key Features
+sh	Bourne Shell	/bin/sh	Oldest shell, very stable
+bash	Bourne Again Shell	/bin/bash	Most popular; enhanced version of sh
+ksh	Korn Shell	/bin/ksh	Faster, supports arrays and scripting
+zsh	Z Shell	/bin/zsh	Highly customizable, used in macOS
+csh	C Shell	/bin/csh	Syntax similar to C language
+Popular Choice for Scripting: bash
+•	Default shell in most Linux systems
+•	User-friendly
+•	Supports functions, arrays, loops
+________________________________________
+4. What is Bash? (Bourne Again Shell)
+•	Bash = Bourne Again Shell
+•	It is an improved version of the original Bourne Shell (sh).
+•	Default shell in:
+o	Red Hat/CentOS/Fedora
+o	Ubuntu (until recently)
+o	Many Linux distros
+Features of Bash:
+•	Command history
+•	Aliases
+•	Tab completion
+•	Loops, functions, arrays in scripts
+•	Error handling
+•	Better usability than sh
+________________________________________
+5. Shell vs Terminal vs Command Line
+Term	Meaning
+Shell	The program that interprets commands (e.g., bash).
+Terminal	The software window that displays the shell (e.g., GNOME Terminal, xterm).
+Command Line	The actual interface where you type commands (prompt area).
+Simple Example:
+•	Terminal is the room
+•	Shell is the person in the room taking orders
+•	Command Line is the notebook where you write the orders
+________________________________________
+6. Writing and Executing a Basic Bash Script
+Step 1: Create a file
+#vim  myscript.sh
+Step 2: Add shebang and commands
+#!/bin/bash
+echo "Hello, this is my first script!"
+Shebang (#!)
+•	Located at the top of script
+•	Tells the system which shell should execute the script
+•	Example:
+o	#!/bin/bash
+o	#!/bin/sh
+o	#!/usr/bin/zsh
+________________________________________
+7. File Permissions & Making Scripts Executable
+Check permissions:
+ls -l myscript.sh
+Example output:
+-rw-r--r-- 1 user user 25 Jan 1 10:00 myscript.sh
+Give execute permission:
+chmod +x myscript.sh
+Run the script:
+./myscript.sh
+Permission Types:
+•	r = read
+•	w = write
+•	x = execute
+________________________________________
+8. Comments in Shell Scripts
+Comments are ignored by the shell.
+Single-line comment:
+# This is a comment
+Using comments for documentation:
+#!/bin/bash
+
+# This script prints system time
+echo "Current time is:"
+date
+Why comments are important:
+•	Help others understand your script
+•	Make maintenance easier
+•	Improve code readability
+
+		
+		
+		
+		
+		
+		
+		
+

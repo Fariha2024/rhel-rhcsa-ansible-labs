@@ -1,0 +1,46 @@
+Remote File Transfer:
+----------------------------------------------------------------------------------------
+Remote file transfer allow us to transfer file/dir local computer to remote computer and remote computer to local computer.
+For remote file transfer use following command popularly -
+1. scp ( Secure Copy )
+2. rsync ( remote synchronization )
+
+both command are secure, both use ssh protocol to transfer file/dir ( port number 22 )
+rsync support synchronization, so use for incremental backup purpose.
+----------------------------------------------------------------------------------------
+I. scp ( Secure Copy )
+
+1. create contents on server1 ( transfer purpose )
+#mkdir  /cisco
+#touch  /cisco/router{1..9}.txt
+-------------------------------------------------------------------------------
+2. Transfer file local to remote ( server1 to server2 )
+#scp  -r /cisco/router1.txt    root@192.168.1.3:/home/
+-------------------------------------------------------------------------------
+3. Transfer directory local to remote  ( server1 to server2 )
+#scp  -r /cisco   root@192.168.1.3:/home/
+-------------------------------------------------------------------------------
+4. Transfer file remote to local ( server2 to server1 )
+#scp  -r  root@192.168.1.3:/home/router1.txt  /mnt/
+-------------------------------------------------------------------------------
+5. Transfer dir remote to local ( server2 to server1 )
+#scp  -r  root@192.168.1.3:/home/cisco  /mnt/
+-------------------------------------------------------------------------------------------------------------------
+II. rsync ( remote synchronization )
+
+1. create contents on server ( transfer purpose )
+#mkdir  /aws
+#touch  /aws/server{1..9}.txt
+--------------------------------------------------------------------------------
+2. Transfer file local to remote ( server1 to server2 )
+#rsync  -rv  /aws/server1.txt   root@192.168.1.3:/home/
+--------------------------------------------------------------------------------
+3. Transfer directory local to remote ( server1 to server2 )
+#rsync  -rv  /aws   root@192.168.1.3:/home/
+--------------------------------------------------------------------------------
+4. Transfer file remote to local ( server2 to server1 )
+#rsync  -rv  root@192.168.1.3:/home/server1.txt   /mnt/
+--------------------------------------------------------------------------------
+5. Transfer dir remote to local ( server2 to server1 )
+#rsync  -rv  root@192.168.1.3:/aws   /mnt/
+=======================================================================================================================================

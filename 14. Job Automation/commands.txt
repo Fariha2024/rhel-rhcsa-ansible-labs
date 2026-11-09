@@ -1,0 +1,127 @@
+Job Automation -
+Job automation is process of complete a job automatically basis on time.
+It use full for routine work such as backup.
+It is also helpful to do task when system administrator is not present.
+
+For job use following command -
+1. at
+2. crontab
+-----------------------------------------------------------------------------------
+set system proper time and date
+
+1. check time and date
+#date
+
+2. disable and stop automatic time syn ( chronyd service )
+#systemctl  disable  chronyd
+#systemctl  stop  chronyd
+
+3. set time & date manually
+#timedatectl  set-time   "2025-04-12  23:25:50"
+#date
+-----------------------------------------------------------------------------------
+1. at
+at command use execute/run job only one time.
+
+1. set job with at command
+#at   21.15
+at>useradd  ajay
+at> 
+
+press "ctrl+d" key for save & exit
+--------------------------------------------------------
+2. show pending jobs
+#atq
+--------------------------------------------------------
+3. show job in details
+#cd   /var/spool/at/
+#ls
+#tail   a000010abdl11
+--------------------------------------------------------
+4. remove job from queue
+#atrm   4
+--------------------------------------------------------
+5. for restrict or deny user to use at
+#vim   /etc/at.deny
+ajay
+:wq
+--------------------------------------------------------
+6. run job 3 day later
+#at   16.00  + 3 days
+--------------------------------------------------------
+7. run job 31 December
+#at   16.00  dec 31
+--------------------------------------------------------
+8. run job tomorrow
+#at   22.00  tomorrow
+============================================================================================================
+2. crontab
+crontab command use for run/execute job multiple times.
+
+Syntax
+#crontab    -e
+*	*	*	*	*	<job>
+
+-----------------------------------------------------------------------
+1. for set job with crontab
+#crontab   -e
+*/1	*	*	*	*	date >> /city.txt
+:wq
+-----------------------------------------------------------------------
+2. for show job list
+#crontab   -l
+-----------------------------------------------------------------------
+3. for remove job ( all jobs at time )
+#crontab   -r
+-----------------------------------------------------------------------
+4. for remove or modify job
+#crontab  -e
+
+remove line of job or modify as per requirement.
+:wq
+------------------------------------------------------------------------
+5.  check other user jobs
+#crontab  -u   ajay  -l
+------------------------------------------------------------------------
+6. edit other user jobs
+#crontab  -u   ajay   -e
+------------------------------------------------------------------------
+7. remove other user jobs
+#crontab   -u  ajay   -r
+------------------------------------------------------------------------
+8. deny/restrict user to use crontab
+#vim   /etc/cron.deny
+ajay
+:wq
+------------------------------------------------------------------------
+9. for crontab log
+#cat   /var/log/cron
+or
+#tail  -f   /var/log/cron
+-------------------------------------------------------------------------
+10. set crontab job using script file
+
+I. create job script file
+#mkdir   /jobs
+#vim    /jobs/script1.sh
+
+#!/bin/bash
+echo  "================================================================" >> /computer.txt
+echo " This computer name is=" >> /computer.txt
+hostname  >> /computer.txt
+echo  "-----------------------------------------------------------------" >> /computer.txt
+echo  " kernel version is=" >> /computer.txt
+uname  -r  >> /computer.txt
+echo "------------------------------------------------------------------" >> /computer.txt
+echo " last 5 user properties = " >> /computer.txt
+tail  -n  5  /etc/passwd
+echo "==============================================================================" >> /computer.txt
+:wq
+
+II. provide execute permission to script file
+#chmod   755  /jobs/script1.sh
+
+III. set cron job
+#crontab   -e
+*	*	*	*	*	/jobs/script1.sh
+===================================================================================================================

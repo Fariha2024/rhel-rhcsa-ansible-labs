@@ -1,0 +1,104 @@
+Package Management in RHEL 10
+--------------------------------------------------------------------------------------------------
+what is package?
+All software on a Linux system is divided into packages that can be installed, uninstalled or update.
+In Linux distributions, a “package” refers to a compressed file archive containing all of the files that come with a particular application.
+
+Package Architecture -
+
+-----------------------------------------------------------------------------------
+Method for install package:
+
+1. Standalone installation -
+This method use for single or few no of computers.
+Eg.
+cd, dvd, pd etc
+-----------------------------------------------------------
+2. Network Installation -
+This method is used for large number of computers.
+Eg. 
+Centralized Server
+-----------------------------------------------------------------------------------
+1. Standalone installation-
+
+rpm : (Red Hat Package Manager)
+RPM command is used to install package in Linux like (RHEL, CentOS and Fedora).
+rpm command use for standalone installation.
+
+Drawback of rpm command:
+1. We Can't install dependent software in single shot.
+2. It Does not wait for user confirmation.
+--------------------------------------------------------------
+manage package using rpm command
+
+1. check package is installed or not
+#rpm   -q  vsftpd
+-------------------------------------------------
+2. install package
+#rpm  -ivh  vsftpd-2.......rpm
+-------------------------------------------------
+3. update package
+#rpm  -U  vsftpd.......rpm
+-------------------------------------------------
+4. remove package
+#rpm  -e  vsftpd
+--------------------------------------------------------------------------------------------------
+2. Network Installation
+
+yum ( yellowdog updator modified )
+
+YUM is an open source package management tool for install rpm based packages in Linux system.
+Yum overcome all drawback of rpm command.
+It allows users administrator to easily install, update, remove or search software packages on a systems.
+-------------------------------------------------------------------------
+To install package with yum command we need create .repo file
+
+#cd   /etc/yum.repos.d/
+#rm  -rvf  *
+#vim   server1.repo
+[01]
+name=app
+baseurl=file:///run/media/root...........x86_64/AppStream
+enabled=1
+gpgcheck=0
+[02]
+name=base
+baseurl=file:///run/media/root...........x86_64/BaseOS
+enabled=1
+gpgcheck=0
+:wq
+----------------------------------------------------------------
+check package info
+#yum  info  vsftpd
+--------------------------------------------
+for install package
+#yum  install  vsftpd
+--------------------------------------------
+for remove package
+#yum   remove  vsftpd
+--------------------------------------------
+for update package
+#yum  update   vsftpd
+--------------------------------------------
+for clean cache
+#yum clean all
+---------------------------------------------
+for show repo list
+#yum  repolist
+---------------------------------------------
+for show all packages
+#yum  list
+================================================================================================
+yum - is a default package management tool/command in rhel6/7
+dnf (dantified) - is a default package management tool/command in rhel8/9/10
+
+yum was develop in 2003, it code written in c or cpp ( approx. 56K lines of code )
+dnf was develop in 2013, it code written in c, cpp, python ( approx. 29K line of code )
+yum consume more memory as compare with dnf, yum is slower as compare with dnf.
+today dnf is better choice cause it is faster, use low memory, written in update programming, better community support etc.
+=================================================================================================
+
+
+
+
+

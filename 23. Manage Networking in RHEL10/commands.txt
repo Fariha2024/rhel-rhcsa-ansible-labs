@@ -1,0 +1,77 @@
+Manage Networking in RHEL10
+======================================================================
+For check ip address
+#ifconfig
+or
+#ip  addr
+-------------------------------------------------------
+for set ip address use following command
+I.  nmcli 
+II. nmtui
+=========================================================================================================
+I. nmcli - network manager command line interface
+
+1. show device info
+#nmcli  dev   status
+-----------------------------------------------------------------------------------------------
+2. create connection/profile
+#nmcli   conn   add   con-name   delhi  ifname   enp0s3   type  ethernet   ipv4.add   192.168.1.2/24   gw4   192.168.1.1   ipv4.dns   192.168.1.1   connection.autoconnect   yes   ipv4.method   manual
+-----------------------------------------------------------------------------------------------
+3. show connection list
+#nmcli   conn   show
+-----------------------------------------------------------------------------------------------
+4. for deactivate running connection
+#nmcli  conn  down   enp0s3
+-----------------------------------------------------------------------------------------------
+5. for activate connection
+#nmcli   conn  up   delhi
+#ifconfig
+-----------------------------------------------------------------------------------------------
+6. for modify  connection
+#nmcli  conn  modify  delhi  ipv4.add   192.168.1.20/24
+#nmcli  conn  modify  delhi  gw4   	192.168.1.254
+#nmcli  conn  modify  delhi  ipv4.dns   8.8.8.8
+#nmcli  conn  modify  delhi  +ipv4.dns  192.168.1.1
+
+#nmcli   conn  down   delhi
+#nmcli   conn  up   delhi
+-----------------------------------------------------------------------------------------------
+7. show connection in details
+#nmcli  conn   show   delhi
+-----------------------------------------------------------------------------------------------
+8. create  connection for automatic ip address
+#nmcli  conn  add   con-name  goa  ifname   enp0s3   type   ethernet   connection.autoconnect   yes  ipv4.metho	  auto
+-----------------------------------------------------------------------------------------------
+9. create connection store on following location
+#cd  /etc/NetworkManager/system-connections/
+#ls  
+-----------------------------------------------------------------------------------------------
+10. delete connection
+#nmcli   conn   delete   delhi 
+-----------------------------------------------------------------------------------------------
+11.for set hostname
+#hostnamectl   set-hostname   server1.example.com
+#hostname
+========================================================================================================================
+II. nmtui - network manager text user interface
+
+1. for manage ip address
+#nmtui
+========================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

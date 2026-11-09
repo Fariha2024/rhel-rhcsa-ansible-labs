@@ -1,0 +1,43 @@
+LVM Practice ( Exam Purpose )
+=============================================================================================================
+1. create logical volume mylv with 600MB from volume group myvg. create xfs file system on mylv and mount it /lv1 directory.
+Ans -
+partition size 	- 600MB + 8MB ( 2PE Extra ) = 608MB
+VG		- myvg
+LV 		- mylv - 600MB
+File System	- xfs
+Mount Point 	- /lv1
+------------------------------------------------------------------------------------------------------------
+2. create logical volume sonylv and samsunglv respectively 700 & 900MB from volume group android. create ext4 file system on both LV's. mount sonlylv in /sony. mount samsunglv in /samsung.
+Ans -
+partition size 	- 700MB +900MB +8MB ( 2PE Extra ) = 1608MB
+VG		- android
+LV 		- sonylv - 700MB & samsunglv - 900MB
+File System	- ext4
+Mount Point 	-  /sony & /samsung
+------------------------------------------------------------------------------------------------------------
+3. create logical volume lv1 and lv2 respectively 200PE and 150PE from volume group storage. create ext4 file system on lv1 and mount it /store/lv1. create xfs file system on lv2 and mount it /store/lv2.
+Ans -
+partition size 	- 200PE+150PE+2PE ( 2PE Extra ) = 800MB + 600MB +8MB = 1408MB
+VG		- storage
+LV 		- lv1 200PE & lv2 150PE
+File System	- ext4 & xfs
+Mount Point 	- /storage/lv1 & /storage/lv2
+------------------------------------------------------------------------------------------------------------
+4. create logical volume chennailv with 300PE from volume group statevg. create xfs file system on chennailv and mount it /Chennai directory.
+Note - PE Size = 8MB.
+Ans -
+partition size 	- 300PE + 2PE ( 2PE Extra ) = 2400MB + 16MB = 2416MB
+VG		- statevg
+LV 		- chennailv - 300PE
+File System	- xfs
+Mount Point 	- /Chennai
+------------------------------------------------------------------------------------------------------------
+5. extend your system swap with 750MB.
+------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+

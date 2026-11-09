@@ -1,0 +1,68 @@
+Linux Boot Process:
+
+what is boot?
+Booting a computer refers to the process of powering on the computer and starting the operating system.
+The boot process loads the operating system into main memory or the random access memory (RAM) installed on your computer.
+----------------------------------------------------------------------------------------------
+diagram available in boot process pdf file
+
+what is run level
+Run level is a state of a machine that defines how a machine should be login, what services and scripts should run when a machine starts.
+
+Total 7 run level ( 0 - 6 )
+-----------------------------------------------------------------------------------------------
+Runlevel 0	poweroff.target		poweroff/shutdown computer
+Runlevel 1	rescue.target		use for troubleshooting. ( single user mode )
+Runlevel 2	multi-user.target	provide TUI ( Network not supported )
+Runlevel 3	multi-user.target	provide TUI ( GUI Not Present ) - default
+Runlevel 4	not in use		reserved for future purpose
+Runlevel 5	graphical.target	provide GUI   (default)
+Runlevel 6	reboot.target		use for reboot computer
+------------------------------------------------------------------------------------------------
+for reboot computer
+#init  6
+--------------------------------------------------------------
+for poweroff computer
+#init  0
+--------------------------------------------------------------
+for check default run level
+#systemctl   get-default
+--------------------------------------------------------------
+for set default runlevel 3 ( TUI )
+#systemctl  set-default   multi-user.target
+or
+#systemctl  set-default	  runlevel3.target
+--------------------------------------------------------------
+for set default runlevel 5 ( GUI )
+#systemctl   set-default   graphical.target
+or
+#systemctl   set-default   runlevel5.target
+-------------------------------------------------------------------------------------------------
+Steps For Reset root user password
+--------------------------------------------------------------------
+1. reboot/restart computer 
+--------------------------------------------------------------------
+2. In boot process when show "kernel line" quickly press "Esc" key 5 to 6 times.
+--------------------------------------------------------------------
+3. select 2nd line ( rescue ) and press "e" key to edit
+--------------------------------------------------------------------
+4. go end of the line ( Linux ($root)....) give one space and type "rd.break" now press "ctrl+x" key
+--------------------------------------------------------------------
+5. now type following command
+#mount  -o   remount,rw   /sysroot
+#chroot  /sysroot
+--------------------------------------------------------------------
+6. set new password to root
+#passwd   root
+1
+1
+--------------------------------------------------------------------
+7. relabel selinux policies
+#touch   /.autorelabel
+--------------------------------------------------------------------
+8. type exit command 2 times
+#exit
+#exit
+--------------------------------------------------------------------
+9. when show login windows, login with new root password
+=========================================================================================================

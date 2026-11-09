@@ -1,0 +1,32 @@
+Protect grub with password
+=========================================================================
+what is grub?
+grub stand for Grand Unified Bootloader.
+grub is default bootloader for all Linux and Unix operating system.
+It was first invented by sir Erich Stefan Boleyn on year 1995.
+Grub is used to load the kernel and then kernel proceed for start operating system, we can say grub is a module which is play very important role to start operating system.
+anyone can go single user mode and change system security as per requirement, this is big security flow.
+To restrict authorized users to access single user mode we can protect grub with password.
+------------------------------------------------------------------------------------
+Steps for protect grub with password
+------------------------------------------------------------------------------------
+Step1. Create password for grub ( hashing password )
+#grub2-mkpasswd-pbkdf2
+
+now generate password for grub, copy hashing password.
+---------------------------------------------------------------
+Step2: edit grub configuration file and set grup password
+
+#vim   /etc/grub2.cfg
+###### inside "BEGIN /etc/grub.d/10_linux ###" module
+
+set superusers=root						[ line num 107 ]
+export superusers						[ line num 108 ]
+password_pbkdf2 root  < paste here hashing password >		[ line num 109 ]
+
+:wq
+---------------------------------------------------------------
+Step3: now reboot system try to go single user mode
+
+without valid username password no one can access single user mode.
+==================================================================================================

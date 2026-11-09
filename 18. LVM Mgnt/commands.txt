@@ -1,0 +1,133 @@
+Advance Disk Management Technic
+====================================================================================================
+LVM ( Logical Volume Manager )
+
+what is LVM?
+Storage technology plays a important role in improving the availability, performance, and ability to manage Linux servers.
+One of the most useful and helpful technology to Linux system administrator is Linux Logical Volume Manager(LVM).
+LVM is a widely-used technique and extremely flexible disk management scheme for deploying logical rather than physical storage. With LVM, system administrator can easily resize and extend the logical drive when it is required.
+--------------------------------------------------------------------------
+LVM create through three steps
+
+1.Physical Volume (PV)
+2.Volume Group (VG)
+3.Logical Volume (LV)
+
+Draw Diagram
+================================================================================================
+Steps For Manage LVM
+
+I. Create Partition for LVM ( with LVM ID=8e )
+
+1. create partition
+#fdisk  /dev/sdb
+create partition with 1 GB and set partition type (id=8e) LVM.
+
+:w
+-----------------------------------------------------------------
+2. check partition
+#lsblk
+================================================================================================
+II. Manage PV
+
+1. create PV
+#pvcreate   /dev/sdb1
+------------------------------------------------
+2. for display PV
+#pvdisplay   /dev/sdb1
+------------------------------------------------
+3. for remove PV
+#pvremove   /dev/sdb1
+================================================================================================
+III. Manage VG
+
+1. for create VG ( default PE size 4MB )
+#vgcreate  india   /dev/sdb1
+
+or
+
+1. for create VG ( custom PE size - eg. 4,8,16,32,64 etc )
+#vgcreate  -s  8  india   /dev/sdb1
+------------------------------------------------
+2. for display VG
+#vgdisplay   india
+------------------------------------------------
+3. for extend VG
+#vgextend   india   /dev/sdb2
+------------------------------------------------
+4. for reduce VG
+#vgreduce   india  /dev/sdb2
+------------------------------------------------
+5. for remove VG
+#vgremove   india
+================================================================================================
+IV. Manage LV
+
+1. Create LV ( -L = size in MB )
+#lvcreate  -L  200  -n   /dev/india/punelv
+
+or
+1. Create LV ( -l = PE )
+#lvcreate  -L  50  -n   /dev/india/punelv
+------------------------------------------------
+2. for extend LV
+#lvextend  -L  +100  /dev/india/punelv
+or
+#lvextend   -l  +25  /dev/india/punelv
+------------------------------------------------
+3. for reduce LV
+#lvreduce  -L  -100   /dev/india/punelv
+or
+#lvreduce  -l  -25  /dev/india/punelv
+------------------------------------------------
+4. for remove LV
+#lvremove   /dev/india/punelv
+====================================================================================================
+V. Manage file system and mounting
+
+1. create file system on lv
+#mkfs.xfs   /dev/india/punelv
+------------------------------------------------
+2. create directory and temporary mount
+#mkdir  /pune
+#mount   /dev/india/punelv   /pune
+------------------------------------------------
+3. Permanent Mounting
+#vim  /etc/fstab
+/dev/india/punelv   /pune    xfs    defaults     0 0 
+:wq
+
+#mount  -a
+#lsblk
+======================================================================================================
+VII. for show all pv
+#pvdisplay
+#pvs
+
+#vgdisplay
+#vgs
+
+#lvdisplay
+#lvs
+======================================================================================================
+VIII. Remove Above Created LVM
+
+1. umount and remove directory.
+2. remove record form /etc/fstab
+3. remove lv
+4. remove vg
+5. remove pv
+5. remove partition
+=======================================================================================================
+IX. for check sata or ssd
+
+#lsblk  -d  -o   name,rota
+
+eg.
+
+/dev/sda	1	( indicate sata )
+/dev/sdb	0	( indiacate ssd )
+=======================================================================================================
+
+
+

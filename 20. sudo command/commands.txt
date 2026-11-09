@@ -1,0 +1,49 @@
+sudo command
+======================================================================
+sudo ( super user do )
+sudo ("superuser do", or "switch user do") command allows a normal user to run command as a super user.
+sudo allows a permitted user to execute a command as another user, according to specifications in the /etc/sudoers file.
+
+--------------------------------------------------------------------------------------
+provide sudo privilege to ajay user
+#vim   /etc/sudoers
+ajay    ALL=(ALL)	ALL			[ line 100 ]
+:wq!
+
+for verify
+#su   ajay
+#sudo   useradd   user1
+--------------------------------------------------------------------------------------
+or
+--------------------------------------------------------------------------------------
+#gpasswd   -a   ajay    wheel 
+
+for verify
+#su   ajay
+#sudo   useradd   user1
+--------------------------------------------------------------------------------------
+provide sudo privilege to avenger group
+
+#vim   /etc/sudoers
+%avenger    ALL=(ALL)	ALL			[ line 110 ]
+:wq!
+
+Note. 
+if any one become member of avenger group then that user get sudo privileges
+--------------------------------------------------------------------------------------
+provide sudo privilege without warning and passwd
+
+#vim  /etc/sudoers
+ajay   	 ALL=(ALL)	NOPASSWD:  ALL	
+%avenger    ALL=(ALL)	NOPASSWD:  ALL
+
+:wq!
+---------------------------------------------------------------------------------------
+provide sudo privilege to specific command
+%kiran    ALL=/usr/sbin/useradd
+
+:wq
+
+Note:
+kiran get sudo privilege to run only useradd command.
+===========================================================================================================================

@@ -1,0 +1,62 @@
+Archive file
+==============================================================================================
+archive is a process of combine multiple file and directory into a single bunch ( tap ).
+It useful for backup purpose.
+It can also supportable for compress size.
+In Linux tar command popularly use for create archive and compress size.
+
+Tar ( Tap Archive )
+tar command popularly use most of the Linux/unix administrator to archive and compression purpose.
+tar command use compression format ( algorithm ) to compression size -
+
+gzip  ( .gz ) 	- z
+bzip2 ( .bz2 ) 	- j
+xzip  ( .xz ) 	- J
+--------------------------------------------------------------------
+1. check size
+#du  -sh  /etc
+--------------------------------------------------------------------
+2. Create archive
+#tar   -cvf   /mnt/backup.tar  /etc
+--------------------------------------------------------------------
+3. create archive with gzip compression ( -z )
+#tar   -cvzf   /mnt/backup.tar.gz  /etc
+--------------------------------------------------------------------
+4. create archive with bzip2 compression ( -j )
+#tar  -cvjf   /mnt/backup.tar.bz2   /etc
+--------------------------------------------------------------------
+5. create archive with xzip compression ( -J )
+#tar  -cvJf   /mnt/backup.tar.xz   /etc
+--------------------------------------------------------------------
+6. show size
+#du  -sh  /mnt/*
+--------------------------------------------------------------------
+7. for check contents of archive file
+#tar  -tvf  /mnt/backup.tar
+-------------------------------------------------------------------
+8. extract archive ( default location )
+#tar  -xvf   /mnt/backup.tar
+-------------------------------------------------------------------
+create directory for extract purpose
+#mkdir  /gzip   /bzip   /xzip
+
+9. extract archive compressed with gzip ( custom location )
+#tar  -xvzf  /mnt/backup.tar.gz  -C  /gzip'
+-------------------------------------------------------------------
+10 extract archive compressed with bzip2 ( custom location )
+#tar  -xvjf  /mnt/backup.tar.bz2  -C  /bzip/
+-------------------------------------------------------------------
+11. extract archive compressed with xzip ( custom location )
+#tar  -xvJf  /mnt/backup.tar.xz   -C  /xzip/
+-------------------------------------------------------------------
+Options
+-c	create
+-v	verbose
+-f 	forcefully
+-t	test
+-C	custom location
+-z	gzip compression
+-j	bzip2 compression
+-J	xzip compression
+
+===========================================================================================================================

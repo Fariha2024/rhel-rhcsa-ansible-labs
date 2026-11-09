@@ -1,0 +1,78 @@
+Host website with https 
+--------------------------------------------------------------------------------
+https ( secure hyper text transfer protocol ) allow us to create secure connection between web server to web browser by using encryption (ssl/tls secure socket layer/transport layer security )
+https is popularly use for secure websites
+It use port number 443
+
+
+Steps for configure https website
+--------------------------------------------------------------------------------
+1. install package
+#yum	install		httpd  mod_ssl   openssl   -y
+--------------------------------------------------------------------------------
+2. start and enable service
+#systemctl	start	httpd
+#systemctl	enable  httpd
+--------------------------------------------------------------------------------
+3. Create test web page
+
+#vim   /var/www/html/index.html
+<html>
+<head><title>bank</title></head>
+<body bgcolor=skyyllow>
+<h1>Welcome TATA Finance Website</h1>
+</body>
+</html>
+:wq
+----------------------------------------------------------------------------
+Step4: add https into firewall
+#firewall-cmd	--permanent	--add-service=https
+#firewall-cmd   --reload
+----------------------------------------------------------------------------
+Step5: Create self-sign Certificate and key
+#openssl  req  -x509  -nodes  -days  365   -newkey   rsa:2048   -keyout   /home/tata.key   -out   /home/tata.crt
+----------------------------------------------------------------------------
+Step6: Update ssl.conf file 
+#vim   /etc/httpd/conf.d/ssl.conf
+
+SSLCertificateFile  /etc/pki/tls/certs/tata.crt				[ line 85 ]
+SSLCertificateKeyFile  /etc/pki/tls/private/tata.key			[ line 92 ]
+
+:wq
+----------------------------------------------------------------------------
+Step7: Transfer key and certs on required location
+
+#cp  -rvf  /home/tata.crt   /etc/pki/tls/certs/
+#cp  -rvf  /home/tata.key   /etc/pki/tls/private/
+----------------------------------------------------------------------------
+Step8: create configuration file
+#vim  /etc/httpd/conf.d/tata.conf
+<VirtualHost *:443>
+SSLEngine on
+SSLCertificateFile  /etc/pki/tls/certs/tata.crt				
+SSLCertificateKeyFile  /etc/pki/tls/private/tata.key
+ServerName finance.tata.com
+ServerAdmin root@finance.tata.com
+DocumentRoot /var/www/html/
+</VirtualHost>
+<Directory /var/www/html/>
+<RequireAll>
+Require all granted
+</RequireAll>
+</Directory>
+<VirtualHost *:80>
+ServerName finance.tata.com
+Redirect  /  https://finance.tata.com
+</VirtualHost>
+:wq
+------------------------------------------------------------------------------
+Step9: restart service and update host file
+#systemctl	restart		httpd
+
+#vim  /etc/hosts
+192.168.1.3  finance.tata.com
+:wq
+------------------------------------------------------------------------------
+Step10: for verify, open browser
+https://finance.tata.com
+==========================================================================================================================

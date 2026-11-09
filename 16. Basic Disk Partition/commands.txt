@@ -1,0 +1,126 @@
+Disk Partition in Linux ( Disk Management ):
+-------------------------------------------------------------------------------------------------
+what is partition -
+partition is process of divide hard disk drive into multiple logical storage unit (partition) called partition.
+partition is very useful for store data into a separate partition.
+
+Disk names:
+Linux maintain disk naming convention for SATA, PATA and Virtual Disk as follows…
+
+1. SATA ( Serial Advance Technology Attachment )
+------------------------------------------------------------------
+Hard Disk 1 - /dev/sda		Hard Disk 2 - /dev/sdb
+
+partition1 - /dev/sda1		partition1 - /dev/sdb1
+partition2 - /dev/sda2		partition2 - /dev/sdb2	
+partition3 - /dev/sda3		partition3 - /dev/sdb3
+.				.
+.				.
+.				.
+--------------------------------------------------------------------
+2. PATA ( Parallel Advance Technology Attachment )
+--------------------------------------------------------------------
+Hard Disk 1 - /dev/hda		Hard Disk 2 - /dev/hdb
+
+partition1 - /dev/hda1		partition1 - /dev/hdb1
+partition2 - /dev/hda2		partition2 - /dev/hdb2	
+partition3 - /dev/hda3		partition3 - /dev/hdb3
+.				.
+.				.
+.				.
+--------------------------------------------------------------------
+3. Virtual Disk
+--------------------------------------------------------------
+Hard Disk 1 - /dev/vda		Hard Disk 2 - /dev/vdb
+
+partition1 - /dev/vda1		partition1 - /dev/vdb1
+partition2 - /dev/vda2		partition2 - /dev/vdb2	
+partition3 - /dev/vda3		partition3 - /dev/vdb3
+.				.
+.				.
+.				.
+--------------------------------------------------------------------
+Type of partitions
+1. Primary Partition
+2. Extended Partition
+3. Logical Partition
+=================================================================================================
+show hard disk details
+#lsblk
+or
+#fdisk  -l
+--------------------------------------------------------------
+Note:
+for partition practice add 2nd hard disk in VM
+
+Poweroff Linux - vm settings - storage- sata controller - add hard disk - create -10GB - ok -start vm - set proper screen resolution - take new one snapshot.
+--------------------------------------------------------------------------------------------------------
+Steps For Manage Partition
+
+1. Create Partition
+#fdisk  /dev/sdb
+
+m	help
+n	new partition
+d	delete partition
+p	print partition
+t	change partition type
+q	quit ( close without saving )
+w	write and quite ( save and close )
+l	show partition type list
+
+create 1 Gb partition and use w ( for write and quite)
+--------------------------------------------------------------------------------------------------------
+2. for show partition
+#lsblk
+--------------------------------------------------------------------------------------------------------
+3. for create file system ( format )
+#mkfs.xfs	/dev/sdb1
+
+what is file system?
+file system is a process of create a structure on partition where OS can store data.
+
+eg.
+Linux - ext, ext2, ext3, ext4, xfs ( RHEL 7/8/9/10 - default file system XFS )
+windows - fat16, fat32, ntfs, refs
+--------------------------------------------------------------------------------------------------------
+4. Mount Partition ( temporary )
+#mkdir   /study
+#mount   /dev/sdb1	/study
+--------------------------------------------------------------------------------------------------------
+5. Mount partition ( permanently )
+#vim	/etc/fstab
+/dev/sdb1	/study		xfs	defaults	 0 0
+:wq
+--------------------------------------------------------------------------------------------------------
+6. Mount all partition ( written in fstab file )
+#mount   -a
+--------------------------------------------------------------------------------------------------------
+7. check partition mouting
+#lsblk
+--------------------------------------------------------------------------------------------------------
+8. unmount partition and remove record from /etc/fstab
+
+#umount  /study
+#vim   /etc/fstab
+
+remove partition line ( dd )
+:wq
+
+#mount  -a
+--------------------------------------------------------------------------------------------------------
+9. delete partition
+#fdisk   /dev/sdb
+
+delete partition ( d )
+:w
+--------------------------------------------------------------------------------------------------------
+10. we can mount partition with help of uuid ( Universal Unique ID ) also
+
+show UUID and file system
+#blkid	/dev/sdb1
+
+#vim   /etc/fstab
+UUID="b3039e27-5c11-49d7-b2e5-e34fe23"    /Chennai    xfs   defaults   0 0
+:wq
+============================================================================================================

@@ -1,0 +1,70 @@
+Manage Group Account:
+
+What is Group:
+Group is collection of user accounts.
+Group is very useful for system administrator to manage permissions.
+-------------------------------------------------
+Type of Group:
+
+1. Primary Group
+Primary group account create and delete automatically with user account operation.
+
+2. Secondary Group
+Secondary group account create and delete by privilege users.
+-------------------------------------------------------------------------------------
+Group Account Database -
+
+1. Group Account Properties	-	/etc/group
+2. Group Admin Properties	-	/etc/gshadow
+-------------------------------------------------------------------------------------
+Steps For Manage Group Account
+
+1. create group account
+#groupadd    ibmgrp
+-------------------------------------------------
+2. check group property
+#grep	ibmgrp	/etc/group
+-------------------------------------------------
+3. add single user in group
+#gpasswd	-a	ajay	ibmgrp
+-------------------------------------------------
+4. delete single user from group
+#gpasswd 	-d	ajay	ibmgrp
+-------------------------------------------------
+5. add/delete multiple member in group ( existing user overwrite )
+#gpasswd   	-M	ajay,vijay,sujay	ibmgrp
+-------------------------------------------------
+6. make group admin ( admin can add/remove single member in group )
+#gpasswd	-A	ajay	ibmgrp
+-------------------------------------------------
+7. make multiple group admin
+#gpasswd 	-A	ajay,suraj,kiran	ibmgrp
+-------------------------------------------------
+8. remove group admin
+#gpasswd	-A	""	ibmgrp
+-------------------------------------------------
+9. check group admin property
+#grep 	ibmgrp	/etc/gshadow
+-------------------------------------------------
+10. modify group id
+#groupmod	-g	5050	ibmgrp
+-------------------------------------------------
+11. delete group account
+#groupdel	ibmgrp
+-------------------------------------------------
+12. show directory details ( permissions )
+#ls	-ld	/chennai
+-------------------------------------------------
+13. change owner of directory
+#chown		mahendra	/chennai
+-------------------------------------------------
+14. change group of directory
+#chgrp		cskgrp		/chennai
+-------------------------------------------------
+or
+-------------------------------------------------
+15. change owner and group at a time
+#chown		mahendra:cskgrp		/chennai
+-------------------------------------------------
+
+

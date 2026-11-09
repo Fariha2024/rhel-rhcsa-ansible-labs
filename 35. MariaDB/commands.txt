@@ -1,0 +1,92 @@
+MariaDB
+==========================================================================================================================
+What is mariadb?
+MariaDB is a free and open source database management system.
+It store or organize data in backend in the format of table, rows, columns etc.
+MariaDB Develop same community who develop Oracle MySQL database.
+MariaDB develop by Corporation AB and open source community.
+MariaDB use port 3306.
+==========================================================================================================================
+Steps for manage MariaDB (192.168.1.2/24) :
+---------------------------------------------------------------------------------
+1. install MariaDB
+#yum	install		mariadb  	mariadb-server 	-y
+---------------------------------------------------------------------------------
+2. start and enable MariaDB
+#systemctl	start	mariadb
+#systemctl	enable 	MariaDB
+---------------------------------------------------------------------------------
+3. add MySQL into firewall ( not recommended )
+#firewall-cmd	--permanent	--add-service=mysql
+#firewall-cmd	--reload
+ --------------------------------------------------------------------------------
+4. login into database
+#mysql	  -u	root
+> show  databases;
+>exit
+---------------------------------------------------------------------------------
+5. Secure Database ( by using following script/command )
+#mysql_secure_installation
+---------------------------------------------------------------------------------
+6. Login in database valid username and password
+#mysql	-u	root	-p
+
+>show 	databases;
+>create   database  mydb;
+>show   databases;
+---------------------------------------------------------------------------------
+7. Create user in database
+> grant   all   on   mydb.*    to    harry@localhost     identified   by   '123';
+> exit
+---------------------------------------------------------------------------------
+8. login via harry user
+# mysql   -u    harry    -p
+>show   databases;
+>exit
+---------------------------------------------------------------------------------
+9. create sample database for backup and restore purpose
+#mysql   -u   root   -p
+> show databases;
+> create  databases   employee;
+> show   databases;
+> use   employee;
+> show   tables;
+> create   table   info (ID int, Name varchar(30), City varchar(30), PinCode int);
+> show  tables;
+> insert  into  info (ID,Name,City,PinCode)  value (1,'Ajay','Delhi',413123);
+> insert  into  info (ID,Name,City,PinCode)  value (2,'John','Chennai',411004);
+> insert  into  info (ID,Name,City,PinCode)  value (3,'Sara','Mumbai',414001);
+> select   *  from   info;
+> exit
+----------------------------------------------------------------------------------
+10. For take backup
+#mysqldump   -u   root   -p   employee   >   /home/emp.db
+#ls   /home/
+#cat   /home/emp.db
+----------------------------------------------------------------------------------
+11. Delete existing database
+#mysql   -u   root   -p
+> show   databases;
+> drop   database   employee;
+> show   databases;
+----------------------------------------------------------------------------------
+create database with same name for restore purpose
+> create   database   employee;
+> use   employee;
+> show  tables;
+> exit
+----------------------------------------------------------------------------------
+12. For restore database
+#mysql   -u   root    -p=india    employee   <   /home/emp.db
+----------------------------------------------------------------------------------
+13. For verify
+#mysql   -u   root   -p   
+> show  databases;
+> use   employee;
+> show  tables;
+> select  * from  info;
+> exit
+----------------------------------------------------------------------------------
+mysqldump   -u   root   -p=india   employee   >   /home/emp.db
+rsync  -r  /home/emp.db  root@192.168.1.3:/backup/
+=============================================================================================================================
