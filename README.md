@@ -1,5 +1,4 @@
-
-Linux | RHEL | RHCSA | Ansible Labs
+🔷 Linux | RHEL | RHCSA | Ansible Labs
 
 Welcome to my Linux, Red Hat Enterprise Linux (RHEL), RHCSA, and Ansible learning repository!
 
@@ -7,7 +6,7 @@ This repository documents my hands-on learning journey through a three-month pai
 
 It contains practical Linux commands, study notes, configurations, troubleshooting techniques, Ansible automation examples, and real-world lab exercises, starting from basic concepts and progressing towards advanced system administration and automation.
 
-🎯 Learning Objectives
+🔹 🎯 Learning Objectives
 Build strong foundations in Linux administration.
 Learn Red Hat Enterprise Linux (RHEL).
 Develop practical skills for RHCSA certification preparation.
@@ -21,8 +20,8 @@ Understand Ansible architecture and automation.
 Configure Ansible control nodes and managed nodes.
 Create and execute Ansible playbooks.
 Practice real-world Linux administration and automation scenarios.
-📚 Repository Contents
-1. Linux & Red Hat Enterprise Linux (RHEL)
+🔹 📚 Repository Contents
+🔵 1. Linux & Red Hat Enterprise Linux (RHEL)
 Linux Fundamentals
 Linux Installation and Configuration
 Basic and Advanced Linux Commands
@@ -41,7 +40,7 @@ Firewalld
 Cron Jobs and Task Scheduling
 Bash Shell Scripting
 System Troubleshooting
-2. RHCSA Certification Preparation
+🔵 2. RHCSA Certification Preparation
 Linux System Administration
 Command-Line Operations
 Storage Configuration
@@ -51,7 +50,7 @@ Security and Permissions
 Service Management
 System Troubleshooting
 RHCSA Practice Exercises
-3. Ansible Automation
+🔵 3. Ansible Automation
 Ansible Introduction
 Ansible Architecture
 Ansible Advantages
@@ -68,7 +67,7 @@ Variables and Facts
 Conditionals and Loops
 Ansible Roles
 Practical Automation Labs
-🖥️ Lab Environment
+🔹 🖥️ Lab Environment
 
 The practical exercises use a Linux-based lab environment consisting of:
 
@@ -77,7 +76,7 @@ Multiple Managed Nodes
 Red Hat Enterprise Linux / compatible Linux environments
 SSH Connectivity
 Ansible Inventory and Configuration Files
-🛠️ Technologies & Tools
+🔹 🛠️ Technologies & Tools
 Linux
 Red Hat Enterprise Linux (RHEL)
 RHCSA
@@ -87,7 +86,7 @@ SSH
 YAML
 Git
 GitHub
-📂 Repository Structure
+🔹 📂 Repository Structure
 rhel-rhcsa-ansible-labs/
 |
 +-- README.md
@@ -122,7 +121,7 @@ rhel-rhcsa-ansible-labs/
 |
 +-- Practical-Projects/
 
-🚀 My Learning Approach
+🔹 🚀 My Learning Approach
 
 I believe in learning through practical implementation rather than focusing only on theory.
 
@@ -135,14 +134,14 @@ Step-by-step practical exercises
 Troubleshooting solutions
 Ansible automation examples
 Hands-on projects
-🎓 Training
+🔹 🎓 Training
 Training Institute: Technical Guftugu
 Course Duration: 3 Months
 Training Focus: Basic to Advanced Red Hat Linux, RHCSA Certification Training, and Ansible Automation.
-🎯 My Goal
+🔹 🎯 My Goal
 
 To develop strong Linux system administration and IT automation skills, gain practical experience with Red Hat Enterprise Linux, prepare for the RHCSA certification, and build a foundation for a career in Linux Administration and DevOps.
 
-Learning | Practicing | Documenting | Automating | Growing
+🔷 Learning | Practicing | Documenting | Automating | Growing
 
 This repository is maintained for educational purposes and to document my personal technical learning journey.
