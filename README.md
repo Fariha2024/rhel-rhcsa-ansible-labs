@@ -4,7 +4,7 @@ Welcome to my Linux, Red Hat Enterprise Linux (RHEL), RHCSA, and Ansible learnin
 
 This repository documents my hands-on learning journey through a three-month paid technical training course at Technical Guftugu.
 
-Here I maintain my Linux administration notes, practical commands, configurations, troubleshooting exercises, and Ansible automation labs, from basic to advanced concepts.
+Here, I maintain my Linux administration notes, practical commands, configurations, troubleshooting exercises, and Ansible automation labs, covering topics from basic to advanced concepts.
 
 🔹 🎯 Learning Objectives
 Develop strong Linux system administration skills.
@@ -50,7 +50,7 @@ Ad-Hoc Commands
 Ansible Configuration File
 Ansible Playbooks
 🔹 🖥️ Lab Environment
-Red Hat Enterprise Linux
+Red Hat Enterprise Linux (RHEL)
 Linux Virtual Machines
 Ansible Control Node
 Multiple Managed Nodes
@@ -67,9 +67,10 @@ YAML
 Git
 GitHub
 🔹 🎓 Training
-Training Institute: Technical Guftugu
-Course Duration: 3 Months
-Training: Basic to Advanced Red Hat Linux, RHCSA Certification Training, and Ansible Automation.
+Details	Information
+Training Institute	Technical Guftugu
+Course Duration	3 Months
+Training Focus	Basic to Advanced Red Hat Linux, RHCSA Certification Training, and Ansible Automation
 🔹 🚀 My Learning Approach
 
 I believe in learning through practical implementation rather than focusing only on theory.
