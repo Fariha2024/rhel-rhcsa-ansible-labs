@@ -57,15 +57,16 @@ Multiple Managed Nodes
 SSH Key Authentication
 Ansible Inventory
 🔹 🛠️ Technologies & Tools
-Linux
-Red Hat Enterprise Linux (RHEL)
-RHCSA
-Ansible
-Bash Scripting
-SSH
-YAML
-Git
-GitHub
+Technology	Purpose
+Linux	Operating System Administration
+RHEL	Red Hat Enterprise Linux
+RHCSA	Certification Preparation
+Ansible	Configuration Management and Automation
+Bash	Shell Scripting
+SSH	Remote Access
+YAML	Ansible Playbook Syntax
+Git	Version Control
+GitHub	Code and Documentation Hosting
 🔹 🎓 Training
 Details	Information
 Training Institute	Technical Guftugu
