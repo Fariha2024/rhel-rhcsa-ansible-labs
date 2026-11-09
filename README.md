@@ -4,143 +4,87 @@ Welcome to my Linux, Red Hat Enterprise Linux (RHEL), RHCSA, and Ansible learnin
 
 This repository documents my hands-on learning journey through a three-month paid technical training course at Technical Guftugu.
 
-It contains practical Linux commands, study notes, configurations, troubleshooting techniques, Ansible automation examples, and real-world lab exercises, starting from basic concepts and progressing towards advanced system administration and automation.
+Here I maintain my Linux administration notes, practical commands, configurations, troubleshooting exercises, and Ansible automation labs, from basic to advanced concepts.
 
 🔹 🎯 Learning Objectives
-Build strong foundations in Linux administration.
+Develop strong Linux system administration skills.
 Learn Red Hat Enterprise Linux (RHEL).
-Develop practical skills for RHCSA certification preparation.
-Understand Linux system architecture and administration.
-Manage users, groups, permissions, and ownership.
-Configure storage, partitions, filesystems, and LVM.
-Manage Linux services, processes, and networking.
-Understand SELinux and firewalld.
+Prepare for RHCSA certification.
+Understand Linux commands and system management.
+Manage users, groups, permissions, and ACLs.
+Configure disks, partitions, swap, and LVM.
+Manage networking, firewalld, and SELinux.
+Configure Linux services and troubleshoot systems.
 Learn Bash scripting and task automation.
-Understand Ansible architecture and automation.
-Configure Ansible control nodes and managed nodes.
+Understand Ansible configuration management.
 Create and execute Ansible playbooks.
-Practice real-world Linux administration and automation scenarios.
-🔹 📚 Repository Contents
-🔵 1. Linux & Red Hat Enterprise Linux (RHEL)
-Linux Fundamentals
-Linux Installation and Configuration
-Basic and Advanced Linux Commands
-File and Directory Management
-Users and Groups Management
-Permissions and Ownership
-Package Management
-Process Management
-Storage Management
-Disk Partitions and LVM
-Filesystems and Mounting
+🔹 📚 Linux & RHEL Topics
+Linux Fundamentals and Basic Commands
+Directory and File Management
+VIM Editor
+User and Group Management
+Basic, ACL, and Special Permissions
+Regular Expressions
+Archive Management
+Job Automation
+Bash Scripting
+Disk Partitioning and Swap Management
+Logical Volume Management (LVM)
+Sudo Configuration
+Linux Boot Process
 Network Configuration
-Systemd and Service Management
+Remote Access and File Transfer
+Firewall Management
+Package Management
+YUM Repository Configuration
+NFS Server Configuration
+Subscription Management
 SELinux
-Firewalld
-Cron Jobs and Task Scheduling
-Bash Shell Scripting
-System Troubleshooting
-🔵 2. RHCSA Certification Preparation
-Linux System Administration
-Command-Line Operations
-Storage Configuration
-User and Group Administration
-Networking
-Security and Permissions
-Service Management
-System Troubleshooting
-RHCSA Practice Exercises
-🔵 3. Ansible Automation
+Apache Web Server and HTTPS
+MariaDB
+🔹 🤖 Ansible Automation Topics
 Ansible Introduction
-Ansible Architecture
-Ansible Advantages
-Ansible Installation
 Ansible Lab Setup
-SSH Key Authentication
-Ansible Inventory Management
-Ansible Configuration
+Inventory Management
 Ad-Hoc Commands
-Ansible Modules
-YAML Fundamentals
+Ansible Configuration File
 Ansible Playbooks
-Variables and Facts
-Conditionals and Loops
-Ansible Roles
-Practical Automation Labs
 🔹 🖥️ Lab Environment
-
-The practical exercises use a Linux-based lab environment consisting of:
-
+Red Hat Enterprise Linux
+Linux Virtual Machines
 Ansible Control Node
 Multiple Managed Nodes
-Red Hat Enterprise Linux / compatible Linux environments
-SSH Connectivity
-Ansible Inventory and Configuration Files
+SSH Key Authentication
+Ansible Inventory
 🔹 🛠️ Technologies & Tools
 Linux
 Red Hat Enterprise Linux (RHEL)
 RHCSA
 Ansible
-Bash Shell Scripting
+Bash Scripting
 SSH
 YAML
 Git
 GitHub
-🔹 📂 Repository Structure
-rhel-rhcsa-ansible-labs/
-|
-+-- README.md
-|
-+-- Linux-RHEL-RHCSA/
-|   +-- Linux-Fundamentals/
-|   +-- Basic-Linux-Commands/
-|   +-- File-Management/
-|   +-- Users-and-Groups/
-|   +-- Permissions/
-|   +-- Package-Management/
-|   +-- Storage-and-LVM/
-|   +-- Networking/
-|   +-- Systemd-Services/
-|   +-- SELinux/
-|   +-- Firewalld/
-|   +-- Shell-Scripting/
-|   +-- RHCSA-Practice-Labs/
-|
-+-- Ansible/
-|   +-- Ansible-Introduction/
-|   +-- Ansible-Installation/
-|   +-- Ansible-Lab-Setup/
-|   +-- SSH-Authentication/
-|   +-- Inventory/
-|   +-- Ad-Hoc-Commands/
-|   +-- Modules/
-|   +-- Playbooks/
-|   +-- Variables-and-Facts/
-|   +-- Loops-and-Conditionals/
-|   +-- Practical-Labs/
-|
-+-- Practical-Projects/
-
+🔹 🎓 Training
+Training Institute: Technical Guftugu
+Course Duration: 3 Months
+Training: Basic to Advanced Red Hat Linux, RHCSA Certification Training, and Ansible Automation.
 🔹 🚀 My Learning Approach
 
 I believe in learning through practical implementation rather than focusing only on theory.
 
-This repository is continuously updated with:
+This repository includes:
 
-Daily learning notes
-Important Linux commands
-Configuration examples
-Step-by-step practical exercises
-Troubleshooting solutions
-Ansible automation examples
-Hands-on projects
-🔹 🎓 Training
-Training Institute: Technical Guftugu
-Course Duration: 3 Months
-Training Focus: Basic to Advanced Red Hat Linux, RHCSA Certification Training, and Ansible Automation.
+Practical Linux commands
+Step-by-step configuration guides
+Hands-on lab exercises
+Troubleshooting examples
+Ansible automation notes
+Real-world administration practices
 🔹 🎯 My Goal
 
-To develop strong Linux system administration and IT automation skills, gain practical experience with Red Hat Enterprise Linux, prepare for the RHCSA certification, and build a foundation for a career in Linux Administration and DevOps.
+To strengthen my Linux system administration and automation skills, gain practical experience with Red Hat Enterprise Linux, prepare for RHCSA certification, and build a strong foundation for a career in Linux Administration and DevOps.
 
 🔷 Learning | Practicing | Documenting | Automating | Growing
 
